@@ -48,7 +48,7 @@ try{
     const embedding=await createEmbedding(chunks[0]);
     const chunkEmbeddings=[];
 
-    for(const chunk of chunks){{
+    for(const chunk of chunks){
         const embedding=await createEmbedding(chunk);
         chunkEmbeddings.push({chunk,embedding});
     }
