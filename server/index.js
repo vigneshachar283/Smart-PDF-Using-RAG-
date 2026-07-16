@@ -23,7 +23,7 @@ app.get('/',(req,res)=>{
 
 
 app.post('/upload',upload.single('pdf'),async (req,res)=>{
-    console.log(req.file);
+    console.log(req.body);
 try{
     const dataBuffer=  fs.readFileSync(req.file.path);
     const pdfData= await pdfParse(dataBuffer);
@@ -32,9 +32,14 @@ try{
 
     const chunks =text.split("\n\n");
 
+    const question =request.body.question;
+    console.log(question);
+
+    const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
+
 const response = await ai.models.generateContent({
  model: "models/gemini-3.1-flash-lite",
-  contents: `Explain this pdf in simple text:\n\n${chunks[1]}`
+  contents: `Answer the question using the context ${matchedChunk} and the question is ${question}`
 });
 
 res.send(response.text);
