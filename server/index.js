@@ -1,6 +1,9 @@
 const express=require('express');
 const app=express();
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
 
 const multer=require('multer');
 const upload=multer({dest:'uploads/'});
@@ -40,9 +43,12 @@ try{
 
     const text=pdfData.text;
 
-    const chunks =text.split("\n\n");
+    const chunks =text.split("\n\n").filter(chunk => chunk.trim() !== '');
 
-    const question =request.body.question;
+    const embedding=await createEmbedding(chunks[0]);
+    console.log(embedding);
+
+    const question =req.body.question;
     console.log(question);
 
     const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
