@@ -46,7 +46,12 @@ try{
     const chunks =text.split("\n\n").filter(chunk => chunk.trim() !== '');
 
     const embedding=await createEmbedding(chunks[0]);
-    console.log(embedding);
+    const chunkEmbeddings=[];
+
+    for(const chunk of chunks){{
+        const embedding=await createEmbedding(chunk);
+        chunkEmbeddings.push({chunk,embedding});
+    }
 
     const question =req.body.question;
     console.log(question);
