@@ -13,6 +13,8 @@ const fs=require('fs');
 
 const {GoogleGenAI} = require('@google/genai');
 
+const { QdrantClient } = require('@qdrant/js-client-rest');
+
 require('dotenv').config();
 
 
@@ -66,7 +68,7 @@ try{
     const questionEmbedding =await createEmbedding(question);
    
 
-    const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
+    //  matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
 
     let bestChunk=null;
     let bestScore=-Infinity;
@@ -89,7 +91,7 @@ console.log("Best Score:", bestScore);
 
 const response = await ai.models.generateContent({
  model: "models/gemini-3.1-flash-lite",
-  contents: `Answer the question using the context ${matchedChunk} and the question is ${question}`
+  contents: `Answer the question using the context ${bestChunk} and the question is ${question}`
 });
 
 res.send(response.text);
