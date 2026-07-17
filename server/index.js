@@ -40,6 +40,7 @@ function cosineSimilarity(vectorA, vectorB) {
     for(let i=0;i<vectorA.length;i++){
         dotProduct += vectorA[i] * vectorB[i];
     }
+    return dotProduct;
 }
 
 app.post('/upload',upload.single('pdf'),async (req,res)=>{
@@ -61,9 +62,27 @@ try{
     }
 
     const question =req.body.question;
-    console.log(question);
 
-    const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
+    const questionEmbedding =await createEmbedding(question);
+   
+
+    // const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
+
+    let bestChunk=null;
+    let bestScore=-Infinity;
+
+
+    for(const item of chunkEmbeddings){
+        const score=cosineSimilarity(questionEmbedding, item.embedding);
+
+      if(score>bestScore){
+
+    bestChunk =item.chunk;
+    bestScore=score;
+
+
+    }
+}
 
 const response = await ai.models.generateContent({
  model: "models/gemini-3.1-flash-lite",
