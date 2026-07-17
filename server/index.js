@@ -66,7 +66,7 @@ try{
     const questionEmbedding =await createEmbedding(question);
    
 
-    // const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
+    const matchedChunk = chunks.find(chunk => chunk.toLowerCase().includes(question.toLowerCase()));
 
     let bestChunk=null;
     let bestScore=-Infinity;
@@ -83,6 +83,9 @@ try{
 
     }
 }
+
+console.log("Best Chunk:", bestChunk);
+console.log("Best Score:", bestScore);
 
 const response = await ai.models.generateContent({
  model: "models/gemini-3.1-flash-lite",
