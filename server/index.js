@@ -34,6 +34,13 @@ app.get('/',(req,res)=>{
     res.send("Hello World");
 })
 
+function cosineSimilarity(vectorA, vectorB) {
+    
+    let dotProduct = 0;
+    for(let i=0;i<vectorA.length;i++){
+        dotProduct += vectorA[i] * vectorB[i];
+    }
+}
 
 app.post('/upload',upload.single('pdf'),async (req,res)=>{
     console.log(req.body);
