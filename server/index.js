@@ -32,8 +32,32 @@ async function createEmbedding(text){
     return response.embeddings[0].values;
 }
 
+
+const qdrant = new QuadrantClient({
+  apiKey: process.env.QUADRANT_API_KEY,
+  url: process.env.QUADRANT_URL
+});
+
+
 app.get('/',(req,res)=>{
     res.send("Hello World");
+})
+
+app.get("/",async (req,res)=>{
+    try{
+   await qdrant.createCollection({
+
+    vectors:{
+        size:3072,
+        distance:'Cosine'
+    }
+
+   }
+    
+   )
+    }catch(err){
+            res.status(500).send(err.message);
+    }
 })
 
 function cosineSimilarity(vectorA, vectorB) {
