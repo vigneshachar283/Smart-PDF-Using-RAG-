@@ -23,7 +23,6 @@ const ai= new GoogleGenAI({
 })
 
 async function createEmbedding(text){
-    
     const response = await ai.models.embedContent({
         model: 'gemini-embedding-2',
         contents: text,
