@@ -50,11 +50,7 @@ app.get("/create-collection",async (req,res)=>{
     vectors:{
         size:3072,
         distance:'Cosine'
-    }
-
-   }
-    
-   )
+    } } )
    res.send("Collection created successfully");
     }catch(err){
             res.status(500).send(err.message);
