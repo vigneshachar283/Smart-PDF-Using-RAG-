@@ -97,8 +97,6 @@ await qdrant.upsert("documenyts", {
 });
 
     const question =req.body.question;
-
-
 const searchResult= await qdrant.search("documenyts",{
     vector: await createEmbedding(question),
     limit: 1
