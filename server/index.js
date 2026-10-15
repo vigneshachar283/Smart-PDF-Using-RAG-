@@ -81,7 +81,6 @@ for (const chunk of chunks) {
     const embedding = await createEmbedding(chunk);
     chunkEmbeddings.push({ chunk, embedding });
 }
-
 const points = chunkEmbeddings.map((item, index) => ({
     id: index + 1,
     vector: item.embedding,
