@@ -15,7 +15,6 @@ const { QdrantClient } = require('@qdrant/js-client-rest');
 
 require('dotenv').config();
 
-
 const ai= new GoogleGenAI({
     apiKey: process.env.GEMINI_API_KEY
 })
