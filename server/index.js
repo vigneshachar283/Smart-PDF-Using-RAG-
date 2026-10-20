@@ -53,7 +53,6 @@ app.get("/create-collection",async (req,res)=>{
 })
 
 function cosineSimilarity(vectorA, vectorB) {
-    
     let dotProduct = 0;
     for(let i=0;i<vectorA.length;i++){
         dotProduct += vectorA[i] * vectorB[i];
