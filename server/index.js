@@ -97,7 +97,6 @@ const searchResult= await qdrant.search("documenyts",{
 });
 
 const bestChunk = searchResult[0].payload.text;
-
 const response = await ai.models.generateContent({
  model: "models/gemini-3.1-flash-lite",
   contents: `Answer the question using the context ${bestChunk} and the question is ${question}`
