@@ -8,7 +8,6 @@ const upload=multer({dest:'uploads/'});
 
 const pdfParse=require('pdf-parse');
 const fs=require('fs');
-
 const {GoogleGenAI} = require('@google/genai');
 
 const { QdrantClient } = require('@qdrant/js-client-rest');
