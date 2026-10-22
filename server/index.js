@@ -26,7 +26,6 @@ async function createEmbedding(text){
 
     return response.embeddings[0].values;
 }
-
 const qdrant = new QdrantClient({
     apiKey: process.env.QUADRANT_API_KEY,
     url: process.env.QUADRANT_URL
