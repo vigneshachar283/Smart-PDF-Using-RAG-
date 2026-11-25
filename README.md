@@ -223,7 +223,6 @@ This project demonstrates practical implementation of:
 * Improve error handling and validation
 * Add streaming AI responses
 
-
 ## 📜 License
 
 This project is licensed under the ISC License.
