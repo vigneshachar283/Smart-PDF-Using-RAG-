@@ -2,6 +2,7 @@
 
 Smart PDF Using RAG is a backend application that allows users to upload a PDF document and ask questions based on its content. The application uses a **Retrieval-Augmented Generation (RAG)** pipeline to extract text from PDFs, generate vector embeddings, store them in a vector database, retrieve relevant context, and generate an AI-powered answer.
 
+
 ## 🚀 Features
 
 * Upload PDF documents
