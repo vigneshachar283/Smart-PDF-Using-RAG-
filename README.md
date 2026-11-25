@@ -13,6 +13,7 @@ Smart PDF Using RAG is a backend application that allows users to upload a PDF d
 * Retrieve the most relevant PDF context
 * Generate answers using Gemini based on the retrieved context
 
+
 ## 🛠️ Tech Stack
 
 * **Node.js** – JavaScript runtime
